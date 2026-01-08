@@ -1,0 +1,7 @@
+{
+  "name": "Copy of Copy4 of Reva Chalet",
+  "description": "A luxury chalet booking platform featuring AI concierge, immersive animations, and comprehensive dashboards for admins and owners.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
