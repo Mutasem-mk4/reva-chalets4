@@ -1,6 +1,6 @@
 {
-  "name": "Copy of Copy4 of Reva Chalet",
-  "description": "A luxury chalet booking platform featuring AI concierge, immersive animations, and comprehensive dashboards for admins and owners.",
+  "name": "Reva Chalet | The Elite Collection",
+  "description": "A luxury architectural sanctuary booking platform featuring AI-driven concierge services, immersive animations, and real-time administrative auditing.",
   "requestFramePermissions": [
     "geolocation"
   ]

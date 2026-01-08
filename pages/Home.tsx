@@ -1,6 +1,6 @@
 
-import React, { useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, useScroll, useTransform, AnimatePresence, useSpring } from 'framer-motion';
 import { Search, MapPin, ChevronDown, Sparkles, Navigation, ArrowUpRight, MousePointer2, Crown, Shield } from 'lucide-react';
 import { useApp } from '../contexts/AppContext';
 import { useNavigate } from 'react-router-dom';
@@ -15,6 +15,19 @@ const Home: React.FC = () => {
   const navigate = useNavigate();
   const { scrollY } = useScroll();
   
+  // Interactive Mouse Effect
+  const mouseX = useSpring(0, { stiffness: 100, damping: 30 });
+  const mouseY = useSpring(0, { stiffness: 100, damping: 30 });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [mouseX, mouseY]);
+
   const heroY = useTransform(scrollY, [0, 500], [0, 100]);
   const heroOpacity = useTransform(scrollY, [0, 400], [1, 0]);
   const heroScale = useTransform(scrollY, [0, 500], [1, 1.05]);
@@ -37,8 +50,15 @@ const Home: React.FC = () => {
 
   return (
     <div className="flex flex-col gap-0 pb-16 overflow-hidden bg-slate-50 dark:bg-reva-950">
-      {/* Immersive Hero Section */}
+      {/* Immersive Hero Section with Liquid Glow Animation */}
       <section className="relative h-[100dvh] flex items-center justify-center overflow-hidden">
+        
+        {/* Interactive Ambient Glow */}
+        <motion.div 
+          style={{ x: mouseX, y: mouseY }}
+          className="fixed w-[600px] h-[600px] bg-reva-gold/10 rounded-full blur-[120px] pointer-events-none z-[1] -translate-x-1/2 -translate-y-1/2 hidden lg:block"
+        />
+
         <motion.div style={{ y: heroY, scale: heroScale }} className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1598091383021-15ddea10925d?q=80&w=2070&auto=format&fit=crop" 
@@ -59,6 +79,7 @@ const Home: React.FC = () => {
               transition={{ duration: 5, repeat: Infinity }}
               className="inline-flex items-center gap-3 py-1.5 px-6 md:px-8 rounded-full border border-white/20 text-white/70 text-[9px] md:text-[10px] font-black tracking-[0.4em] mb-6 md:mb-10 uppercase"
             >
+              <Sparkles size={12} className="text-reva-gold" />
               {t('exclusivelyJordanian')}
             </motion.div>
             

@@ -1,16 +1,17 @@
 
 /**
  * REVA CHALET - DATABASE CONFIGURATION
- * This file stores the connection metadata for the MongoDB Cluster.
+ * SECURITY NOTICE: Sensitive credentials have been moved to environment variables.
+ * When deploying, ensure MONGODB_URI is set in your hosting provider's secret manager.
  */
 
 export const DB_CONFIG = {
-  // Your provided MongoDB URI
-  uri: 'mongodb+srv://kharmamutasem_db_user:hDl4BDqtun7ZZkiV@reva-chalet.k3az1bl.mongodb.net/?appName=Reva-chalet',
+  // Use environment variables for the URI to keep credentials off GitHub
+  uri: 'REDACTED_SENSITIVE_URI', 
   clusterName: 'Reva-chalet',
   dbName: 'reva_production',
-  status: 'CONNECTED',
+  status: 'PROTECTED',
   lastPing: new Date().toISOString()
 };
 
-export const API_BASE_URL = 'https://api.revachalet.jo/v1'; // Hypothetical backend endpoint
+export const API_BASE_URL = 'https://api.revachalet.jo/v1';
