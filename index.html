@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" class="dark">
   <head>
@@ -29,6 +28,8 @@
               'pulse-slow': 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
               'shimmer': 'shimmer 2s linear infinite',
               'float': 'float 6s ease-in-out infinite',
+              'spin-slow': 'spin 8s linear infinite',
+              'glow': 'glow 4s ease-in-out infinite',
             },
             keyframes: {
               shimmer: {
@@ -38,6 +39,10 @@
               float: {
                 '0%, 100%': { transform: 'translateY(0px)' },
                 '50%': { transform: 'translateY(-20px)' },
+              },
+              glow: {
+                '0%, 100%': { opacity: 0.3, transform: 'scale(1)' },
+                '50%': { opacity: 0.6, transform: 'scale(1.2)' },
               }
             }
           },
@@ -47,6 +52,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
     <style>
+      html {
+        scroll-behavior: smooth;
+      }
       body { 
         font-family: 'Inter', sans-serif; 
         -webkit-font-smoothing: antialiased;
@@ -62,20 +70,29 @@
       }
       
       .premium-shadow {
-        shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)];
+        box-shadow: 0 32px 64px -16px rgba(0,0,0,0.5);
       }
 
-      ::-webkit-scrollbar { width: 4px; }
-      ::-webkit-scrollbar-track { background: #0f172a; }
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: #020617; }
       ::-webkit-scrollbar-thumb { 
-        background: #334155; 
+        background: #1e293b; 
         border-radius: 10px; 
       }
       ::-webkit-scrollbar-thumb:hover { background: #d4af37; }
 
       ::selection {
         background: #d4af37;
-        color: #0f172a;
+        color: #020617;
+      }
+
+      .text-glow {
+        text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+      }
+
+      /* Custom cursor hide on hover of interactive elements */
+      .interactive-hover:hover {
+        cursor: pointer;
       }
     </style>
   <script type="importmap">
