@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reva Chalets - Hybrid Style Design</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: hsl(15, 55%, 45%);
+            --primary-light: hsl(15, 55%, 55%);
+            --primary-dark: hsl(15, 55%, 35%);
+            --cream: hsl(40, 35%, 95%);
+            --cream-dark: hsl(38, 30%, 90%);
+            --olive: hsl(82, 30%, 40%);
+            --olive-light: hsl(82, 30%, 50%);
+            --dark: hsl(20, 20%, 8%);
+            --text: hsl(20, 20%, 15%);
+            --text-muted: hsl(20, 15%, 45%);
+            --card-bg: hsl(40, 30%, 99%);
+            --border: hsl(35, 25%, 85%);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* Navigation - Glass Effect */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        nav.scrolled {
+            padding: 0.75rem 3rem;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            letter-spacing: 0.05em;
+        }
+
+        .nav-center {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-center a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-center a:hover {
+            color: var(--primary);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .lang-toggle {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        .nav-btn {
+            background: var(--primary);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            color: white;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        /* Hero - With Integrated Booking */
+        .hero {
+            min-height: 90vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('../images/hero.png') center/cover no-repeat;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg,
+                    rgba(20, 10, 5, 0.75) 0%,
+                    rgba(20, 10, 5, 0.4) 50%,
+                    rgba(20, 10, 5, 0.2) 100%);
+        }
+
+        .hero-container {
+            position: relative;
+            z-index: 10;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            width: 100%;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            color: white;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-badge .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--olive-light);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 500;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+        }
+
+        .hero-description {
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        /* Booking Card */
+        .booking-card {
+            position: absolute;
+            right: 3rem;
+            bottom: 4rem;
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            width: 420px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+        }
+
+        .booking-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        .booking-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 0.875rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            font-size: 0.9rem;
+            font-family: inherit;
+            background: var(--cream);
+            color: var(--text);
+            transition: all 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(196, 112, 79, 0.1);
+        }
+
+        .search-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary);
+            border: none;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            transition: all 0.3s;
+            margin-top: 0.5rem;
+        }
+
+        .search-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(196, 112, 79, 0.3);
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: white;
+            padding: 1.5rem 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stats-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        /* Featured Section */
+        .featured {
+            padding: 5rem 3rem;
+            background: var(--cream);
+        }
+
+        .featured-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--text);
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        .view-all {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s;
+        }
+
+        .view-all:hover {
+            gap: 0.75rem;
+        }
+
+        /* Chalet Cards */
+        .chalets-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .chalet-card {
+            background: white;
+            border-radius: 1.25rem;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .chalet-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        .chalet-image {
+            position: relative;
+            aspect-ratio: 4/3;
+            overflow: hidden;
+        }
+
+        .chalet-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .chalet-card:hover .chalet-image img {
+            transform: scale(1.08);
+        }
+
+        .chalet-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: white;
+            padding: 0.4rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--olive);
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .chalet-favorite {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .chalet-favorite:hover {
+            transform: scale(1.1);
+        }
+
+        .chalet-content {
+            padding: 1.5rem;
+        }
+
+        .chalet-location {
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .chalet-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            color: var(--text);
+            margin-bottom: 0.75rem;
+        }
+
+        .chalet-features {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .chalet-features span {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .chalet-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .chalet-price {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .chalet-price span {
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+
+        .chalet-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .chalet-rating .star {
+            color: #F59E0B;
+        }
+
+        /* Experience Section */
+        .experience {
+            padding: 5rem 3rem;
+            background: var(--dark);
+            color: white;
+        }
+
+        .experience-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .experience-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .experience-content p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .experience-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .exp-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .exp-feature-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .exp-feature-text h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .exp-feature-text p {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin: 0;
+        }
+
+        .experience-gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .experience-gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 1rem;
+        }
+
+        .experience-gallery img:first-child {
+            grid-row: 1 / 3;
+            height: 100%;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 6rem 3rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            text-align: center;
+            color: white;
+        }
+
+        .cta h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: white;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 0.75rem;
+            transition: all 0.3s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 3rem 2rem;
+            background: var(--dark);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .footer-desc {
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .footer-title {
+            color: white;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            max-width: 1280px;
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.875rem;
+        }
+
+        /* Design Label */
+        .design-label {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--olive);
+            color: white;
+            padding: 1rem 1.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .booking-card {
+                position: relative;
+                right: 0;
+                bottom: 0;
+                width: 100%;
+                max-width: 500px;
+                margin: 2rem auto 0;
+            }
+
+            .hero {
+                flex-direction: column;
+                padding: 100px 0 2rem;
+                min-height: auto;
+            }
+
+            .hero-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .chalets-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-center {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 2.25rem;
+            }
+
+            .booking-card {
+                margin: 1.5rem;
+                width: calc(100% - 3rem);
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-container {
+                flex-wrap: wrap;
+                gap: 2rem;
+            }
+
+            .chalets-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-container {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-gallery {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto;
+            }
+
+            .experience-gallery img:first-child {
+                grid-row: auto;
+                height: 200px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Design Label -->
+    <div class="design-label">🎨 Hybrid Style Design</div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">REVA CHALETS</div>
+        <ul class="nav-center">
+            <li><a href="#chalets">Chalets</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#locations">Locations</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+        <div class="nav-right">
+            <span class="lang-toggle">EN | عربي</span>
+            <button class="nav-btn">Book Now</button>
+        </div>
+    </nav>
+
+    <!-- Hero with Booking -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="dot"></span>
+                    <span>50+ Luxury Chalets Available</span>
+                </div>
+                <h1 class="hero-title">Discover Jordanian<br>Hospitality</h1>
+                <p class="hero-description">Experience authentic luxury in our handpicked collection of chalets across
+                    Jordan's most breathtaking locations.</p>
+            </div>
+
+            <!-- Booking Card -->
+            <div class="booking-card">
+                <h3>Find Your Perfect Chalet</h3>
+                <form class="booking-form">
+                    <div class="form-group">
+                        <label>Location</label>
+                        <select>
+                            <option>All Locations</option>
+                            <option>Amman</option>
+                            <option>Dead Sea</option>
+                            <option>Petra</option>
+                            <option>Wadi Rum</option>
+                            <option>Aqaba</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Check In</label>
+                            <input type="date" />
+                        </div>
+                        <div class="form-group">
+                            <label>Check Out</label>
+                            <input type="date" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Guests</label>
+                        <select>
+                            <option>2 Guests</option>
+                            <option>3 Guests</option>
+                            <option>4 Guests</option>
+                            <option>5+ Guests</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="search-btn">
+                        <span>🔍</span>
+                        <span>Search Chalets</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-value">50+</div>
+                <div class="stat-label">Premium Chalets</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">12</div>
+                <div class="stat-label">Jordanian Locations</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">4.9</div>
+                <div class="stat-label">Average Rating</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">5000+</div>
+                <div class="stat-label">Happy Guests</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Chalets -->
+    <section class="featured" id="chalets">
+        <div class="featured-container">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Featured Chalets</h2>
+                    <p class="section-subtitle">Hand-picked luxury retreats for an unforgettable stay</p>
+                </div>
+                <a href="#" class="view-all">View all chalets →</a>
+            </div>
+
+            <div class="chalets-grid">
+                <!-- Chalet 1 -->
+                <div class="chalet-card">
+                    <div class="chalet-image">
+                        <img src="../images/chalet-1.png" alt="Mountain View Retreat">
+                        <div class="chalet-badge">
+                            <span>✨</span>
+                            <span>Featured</span>
+                        </div>
+                        <div class="chalet-favorite">♡</div>
+                    </div>
+                    <div class="chalet-content">
+                        <p class="chalet-location">Ajloun</p>
+                        <h3 class="chalet-name">Mountain View Retreat</h3>
+                        <div class="chalet-features">
+                            <span>🛏️ 3 Beds</span>
+                            <span>👥 6 Guests</span>
+                            <span>🏊 Pool</span>
+                        </div>
+                        <div class="chalet-footer">
+                            <div class="chalet-price">150 JOD <span>/ night</span></div>
+                            <div class="chalet-rating">
+                                <span class="star">★</span>
+                                <span>4.9</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chalet 2 -->
+                <div class="chalet-card">
+                    <div class="chalet-image">
+                        <img src="../images/chalet-2.png" alt="Desert Oasis">
+                        <div class="chalet-badge">
+                            <span>🔥</span>
+                            <span>Popular</span>
+                        </div>
+                        <div class="chalet-favorite">♡</div>
+                    </div>
+                    <div class="chalet-content">
+                        <p class="chalet-location">Wadi Rum</p>
+                        <h3 class="chalet-name">Desert Oasis Villa</h3>
+                        <div class="chalet-features">
+                            <span>🛏️ 2 Beds</span>
+                            <span>👥 4 Guests</span>
+                            <span>🌅 Terrace</span>
+                        </div>
+                        <div class="chalet-footer">
+                            <div class="chalet-price">200 JOD <span>/ night</span></div>
+                            <div class="chalet-rating">
+                                <span class="star">★</span>
+                                <span>4.8</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chalet 3 -->
+                <div class="chalet-card">
+                    <div class="chalet-image">
+                        <img src="../images/chalet-3.png" alt="Olive Grove Villa">
+                        <div class="chalet-badge">
+                            <span>🌿</span>
+                            <span>Eco-Friendly</span>
+                        </div>
+                        <div class="chalet-favorite">♡</div>
+                    </div>
+                    <div class="chalet-content">
+                        <p class="chalet-location">Madaba</p>
+                        <h3 class="chalet-name">Olive Grove Villa</h3>
+                        <div class="chalet-features">
+                            <span>🛏️ 4 Beds</span>
+                            <span>👥 8 Guests</span>
+                            <span>🌳 Garden</span>
+                        </div>
+                        <div class="chalet-footer">
+                            <div class="chalet-price">180 JOD <span>/ night</span></div>
+                            <div class="chalet-rating">
+                                <span class="star">★</span>
+                                <span>4.9</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience" id="experience">
+        <div class="experience-container">
+            <div class="experience-content">
+                <h2>The Reva Experience</h2>
+                <p>More than just a stay — we offer a gateway to authentic Jordanian culture, breathtaking landscapes,
+                    and memories that last a lifetime.</p>
+
+                <div class="experience-features">
+                    <div class="exp-feature">
+                        <div class="exp-feature-icon">🏛️</div>
+                        <div class="exp-feature-text">
+                            <h4>Heritage Design</h4>
+                            <p>Authentic Jordanian architecture</p>
+                        </div>
+                    </div>
+                    <div class="exp-feature">
+                        <div class="exp-feature-icon">🍽️</div>
+                        <div class="exp-feature-text">
+                            <h4>Local Cuisine</h4>
+                            <p>Traditional breakfast included</p>
+                        </div>
+                    </div>
+                    <div class="exp-feature">
+                        <div class="exp-feature-icon">🧭</div>
+                        <div class="exp-feature-text">
+                            <h4>Guided Tours</h4>
+                            <p>Curated local experiences</p>
+                        </div>
+                    </div>
+                    <div class="exp-feature">
+                        <div class="exp-feature-icon">💎</div>
+                        <div class="exp-feature-text">
+                            <h4>Premium Amenities</h4>
+                            <p>Luxury at every detail</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-gallery">
+                <img src="../images/chalet-4.png" alt="Experience 1">
+                <img src="../images/chalet-1.png" alt="Experience 2">
+                <img src="../images/chalet-3.png" alt="Experience 3">
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <h2>Ready to Experience Jordan?</h2>
+        <p>Book your luxury chalet today and create unforgettable memories</p>
+        <a href="#" class="cta-btn">Browse All Chalets</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div>
+                <div class="footer-brand">REVA CHALETS</div>
+                <p class="footer-desc">Authentic Jordanian hospitality meets modern luxury. Discover our curated
+                    collection of chalets across Jordan's most beautiful locations.</p>
+            </div>
+            <div>
+                <h4 class="footer-title">Explore</h4>
+                <ul class="footer-links">
+                    <li><a href="#">All Chalets</a></li>
+                    <li><a href="#">Locations</a></li>
+                    <li><a href="#">Experiences</a></li>
+                    <li><a href="#">Special Offers</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title">Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title">Support</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Cancellation</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Reva Chalets. All rights reserved. Made with ❤️ in Jordan</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+
+</html>

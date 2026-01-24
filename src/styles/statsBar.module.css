@@ -1,0 +1,87 @@
+/* ═══════════════════════════════════════════════════════════════
+   STATS BAR STYLES
+   Extracted from StatsBar.tsx inline styles
+   ═══════════════════════════════════════════════════════════════ */
+
+.statsBar {
+    background: hsl(var(--card));
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid hsl(var(--border));
+    position: relative;
+    z-index: 5;
+}
+
+.statsContainer {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.statItem {
+    text-align: center;
+    min-width: 120px;
+    contain: layout style;
+    /* Prevent layout recalculations from affecting parent */
+}
+
+.statValue {
+    font-family: var(--font-serif);
+    font-size: 2.25rem;
+    color: hsl(var(--primary));
+    font-weight: 600;
+    line-height: 1.2;
+    min-width: 80px;
+    /* Prevent width changes during count-up */
+    display: inline-block;
+    font-variant-numeric: tabular-nums;
+    /* Consistent number widths */
+}
+
+.statLabel {
+    font-size: 0.875rem;
+    color: hsl(var(--muted-foreground));
+    margin-top: 0.25rem;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   RESPONSIVE - TABLET (768px)
+   ───────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .statsContainer {
+        gap: 1rem;
+    }
+
+    .statItem {
+        min-width: 100px;
+    }
+
+    .statValue {
+        font-size: 1.75rem;
+    }
+
+    .statLabel {
+        font-size: 0.75rem;
+    }
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   RESPONSIVE - MOBILE (480px)
+   ───────────────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+    .statsBar {
+        padding: 1.25rem 1rem;
+    }
+
+    .statsContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem 1rem;
+    }
+
+    .statItem {
+        min-width: auto;
+    }
+}

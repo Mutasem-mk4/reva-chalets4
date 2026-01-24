@@ -1,0 +1,111 @@
+:root {
+  /* ═══════════════════════════════════════════════════════════════
+     REVA CHALETS - "Jordanian Heritage" Color Palette
+     Inspired by Jordan's warm landscapes and rich culture
+     ═══════════════════════════════════════════════════════════════ */
+
+  /* Primary - Warm Terracotta (Earthy, Inviting) */
+  --primary: 15 55% 45%;
+  --primary-foreground: 0 0% 100%;
+
+  /* Secondary - Warm Cream (Elegance, Comfort) */
+  --secondary: 40 35% 95%;
+  --secondary-foreground: 15 55% 35%;
+
+  /* Accent - Olive Green (Nature, Jordanian Landscapes) */
+  --accent: 82 30% 40%;
+  --accent-foreground: 0 0% 100%;
+
+  /* Muted - Subtle text and backgrounds */
+  --muted: 38 25% 92%;
+  --muted-foreground: 20 20% 38%;
+  /* Darker for better contrast - WCAG AAA */
+
+  /* Neutral/System Colors */
+  --background: 38 40% 97%;
+  --foreground: 20 25% 12%;
+  /* Darker for stronger contrast */
+
+  --card: 40 30% 99%;
+  --card-foreground: 20 25% 12%;
+
+  --border: 35 25% 85%;
+  --input: 35 25% 85%;
+  --ring: 15 55% 40%;
+
+  /* Semantic Colors */
+  --success: 142 70% 42%;
+  --success-foreground: 0 0% 100%;
+
+  --warning: 38 92% 50%;
+  --warning-foreground: 0 0% 100%;
+
+  --error: 0 84% 60%;
+  --error-foreground: 0 0% 100%;
+
+  --info: 199 89% 48%;
+  --info-foreground: 0 0% 100%;
+
+  /* Design Tokens */
+  --radius: 1rem;
+
+  /* Shadows - Soft & Diffused for visual comfort */
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.03);
+  --shadow-md: 0 4px 8px -2px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.04);
+  --shadow-lg: 0 12px 20px -4px rgb(0 0 0 / 0.06), 0 4px 8px -4px rgb(0 0 0 / 0.04);
+  --shadow-luxury: 0 25px 50px -12px rgb(0 0 0 / 0.1);
+
+  /* Gradients - Jordanian Warmth */
+  --gradient-gold: linear-gradient(135deg, #C4704F 0%, #D4906F 50%, #A65A3F 100%);
+  --gradient-metallic: linear-gradient(110deg, #A65A3F 0%, #D4906F 25%, #C4704F 50%, #D4906F 75%, #A65A3F 100%);
+  --gradient-hero: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(20, 10, 5, 0.85));
+  --gradient-card: linear-gradient(145deg, hsl(40 30% 99%), hsl(38 35% 96%));
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Playfair Display', serif;
+
+  /* Letter Spacing (Tracking) */
+  --tracking-tighter: -0.05em;
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0em;
+  --tracking-wide: 0.025em;
+  --tracking-wider: 0.05em;
+  --tracking-widest: 0.1em;
+  --tracking-luxury: 0.2em;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   DARK MODE - Jordanian Night
+   ═══════════════════════════════════════════════════════════════ */
+[data-theme='dark'] {
+  --background: 20 20% 8%;
+  --foreground: 38 30% 95%;
+
+  --card: 20 18% 12%;
+  --card-foreground: 38 30% 95%;
+
+  --primary: 15 50% 55%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 20 18% 16%;
+  --secondary-foreground: 38 30% 95%;
+
+  --muted: 20 15% 18%;
+  --muted-foreground: 30 12% 70%;
+  /* Brighter for dark mode readability */
+
+  /* Brighter olive for dark backgrounds */
+  --accent: 82 35% 50%;
+  --accent-foreground: 20 20% 8%;
+
+  --border: 20 15% 20%;
+  --input: 20 15% 20%;
+  --ring: 15 50% 50%;
+
+  /* Adjusted shadows for dark mode */
+  --shadow-luxury: 0 25px 50px -12px rgb(0 0 0 / 0.5);
+
+  /* Dark mode gradients */
+  --gradient-card: linear-gradient(145deg, hsl(20 18% 14%), hsl(20 18% 10%));
+}

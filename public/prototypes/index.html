@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reva Chalets - Design Prototypes</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: hsl(15, 55%, 45%);
+            --primary-light: hsl(15, 55%, 55%);
+            --olive: hsl(82, 30%, 40%);
+            --cream: hsl(40, 35%, 95%);
+            --dark: hsl(20, 20%, 8%);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: linear-gradient(135deg, var(--dark) 0%, hsl(20, 18%, 12%) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: white;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1rem;
+            margin-bottom: 4rem;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .description {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.7;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            text-align: left;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.4rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-light);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .card:hover .card-link {
+            gap: 0.75rem;
+        }
+
+        .card.portfolio {
+            border-top: 3px solid var(--primary);
+        }
+
+        .card.hybrid {
+            border-top: 3px solid var(--olive);
+        }
+
+        .comparison {
+            margin-top: 4rem;
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .comparison h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+            text-align: left;
+        }
+
+        .comparison-header {
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.5);
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .comparison-cell {
+            padding: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .check {
+            color: #22c55e;
+        }
+
+        .partial {
+            color: #eab308;
+        }
+
+        .none {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-header:not(:first-child) {
+                margin-top: 1rem;
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: 0.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo">REVA CHALETS</div>
+        <p class="subtitle">Design Prototypes</p>
+
+        <h1>Choose Your Design Direction</h1>
+        <p class="description">Compare two design approaches for Reva Chalets. Click each card to view the full
+            interactive prototype.</p>
+
+        <div class="cards">
+            <!-- Portfolio Style -->
+            <a href="portfolio-style.html" class="card portfolio">
+                <div class="card-icon">🎨</div>
+                <h2>Portfolio Style</h2>
+                <p>A luxury brand approach focused on visual storytelling, cinematic imagery, and emotional connection.
+                    Perfect for showcasing premium properties.</p>
+                <div class="card-features">
+                    <span class="feature-tag">Cinematic Hero</span>
+                    <span class="feature-tag">Dark Theme</span>
+                    <span class="feature-tag">Gallery Focus</span>
+                    <span class="feature-tag">Minimal UI</span>
+                </div>
+                <span class="card-link">View Prototype →</span>
+            </a>
+
+            <!-- Hybrid Style -->
+            <a href="hybrid-style.html" class="card hybrid">
+                <div class="card-icon">⚡</div>
+                <h2>Hybrid Style</h2>
+                <p>The best of both worlds — premium portfolio aesthetics combined with full booking functionality.
+                    Ideal for a working booking platform.</p>
+                <div class="card-features">
+                    <span class="feature-tag">Booking Form</span>
+                    <span class="feature-tag">Pricing</span>
+                    <span class="feature-tag">Filters</span>
+                    <span class="feature-tag">Premium UI</span>
+                </div>
+                <span class="card-link">View Prototype →</span>
+            </a>
+        </div>
+
+        <!-- Comparison Table -->
+        <div class="comparison">
+            <h3>Quick Comparison</h3>
+            <div class="comparison-grid">
+                <div class="comparison-header">Feature</div>
+                <div class="comparison-header">Portfolio</div>
+                <div class="comparison-header">Hybrid</div>
+
+                <div class="comparison-cell">Visual Impact</div>
+                <div class="comparison-cell"><span class="check">★★★★★</span></div>
+                <div class="comparison-cell"><span class="check">★★★★☆</span></div>
+
+                <div class="comparison-cell">Booking Flow</div>
+                <div class="comparison-cell"><span class="none">—</span></div>
+                <div class="comparison-cell"><span class="check">✓ Full</span></div>
+
+                <div class="comparison-cell">Search & Filters</div>
+                <div class="comparison-cell"><span class="none">—</span></div>
+                <div class="comparison-cell"><span class="check">✓ Full</span></div>
+
+                <div class="comparison-cell">Pricing Display</div>
+                <div class="comparison-cell"><span class="none">—</span></div>
+                <div class="comparison-cell"><span class="check">✓ Full</span></div>
+
+                <div class="comparison-cell">Self-Service</div>
+                <div class="comparison-cell"><span class="partial">Limited</span></div>
+                <div class="comparison-cell"><span class="check">✓ Full</span></div>
+
+                <div class="comparison-cell">Storytelling</div>
+                <div class="comparison-cell"><span class="check">★★★★★</span></div>
+                <div class="comparison-cell"><span class="check">★★★☆☆</span></div>
+
+                <div class="comparison-cell">Best For</div>
+                <div class="comparison-cell">Luxury Showcase</div>
+                <div class="comparison-cell">Booking Platform</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
